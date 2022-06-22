@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Comentarios(models.Model):
+    
+    nombre = models.CharField(max_length=15)
+    coment = models.TextField()
