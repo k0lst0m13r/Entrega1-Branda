@@ -5,8 +5,70 @@
 
 {% block contenido %}
 
+<section class="features">
+    <div class="container">
 
-<h1>BLOG</h1>
+        <h1>BLOG</h1>
+
+        <style>
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+    
+            th, td {
+              text-align: left;
+              padding: 8px;
+            }
+    
+            tr:nth-child(even){background-color: #f2f2f2}
+    
+            th {
+              background-color: #0094a7;
+              color: white;
+            }
+        </style>
+
+
+        <table>
+
+            <thead>
+                <th>Autor</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+            </thead>
+
+            {% for comentario in comentarios %}
+
+            <tr>
+                <td>{{comentario.nombre}}</td>
+                <td>{{comentario.comentario}}</td>
+                <td>{{comentario.creado}}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            <div class="section-title"> 
+                <h2>Comentarios</h2>
+            </div>            
+            <div class="d-flex justify-cntent-center align-items-center">    
+                <form method="POST" class="post-form">{% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Publicar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>        
+
+    
 
 
 {% endblock %}

@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from DjangoApp.models import *
+from .forms import *
+
+
 
 def index(request):
     return render(request, 'DjangoApp/index.html')
@@ -13,4 +17,19 @@ def portfolio(request):
     return render(request, 'DjangoApp/portfolio.html')
 
 def blog(request):
-    return render(request, 'DjangoApp/blog.html')
+    
+    comentarios = Comentarios.objects.all()
+    
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('blog')
+        
+    else:
+        form = CommentForm()
+    
+    
+    
+    ctx = {"comentarios": comentarios, "form": form}   
+    return render(request, 'DjangoApp/blog.html', ctx)
