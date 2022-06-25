@@ -121,8 +121,11 @@
                     <p>Subscribite y mantenete al dia sobre nuestros articulos</p>
                   </div>
                   <div class="col-lg-6">
-                    <form method="POST" > {% csrf_token %}
-                      <input type="email" name="email"><input type="submit" value="Subscribir">
+                    <form method="POST" >
+                       {% csrf_token %}
+                         {{ form.as_p }}  
+                      <input type="submit" value="Subscribir">
+                      
                     </form>
                   </div>
                 </div>
