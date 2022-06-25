@@ -1,0 +1,22 @@
+
+{% load static %}
+
+{% block titulo %}Suscripciones{% endblock %}
+
+{% block contenido %}
+
+<ul>
+
+    {% for suscripcion in suscripciones %}
+
+        <li>
+            {{suscripcion.email}}   
+        </li>
+
+    {% endfor %}
+
+</ul>
+
+<a href="{% url 'index' %}"><input type="submit" value="Volver al sitio"></a>
+
+{% endblock %}

@@ -9,7 +9,7 @@ def base(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -23,7 +23,7 @@ def index(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -35,7 +35,7 @@ def index(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -48,7 +48,7 @@ def contacto(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -61,7 +61,7 @@ def portfolio(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -74,7 +74,7 @@ def blog(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -89,7 +89,7 @@ def servicios(request):
         form = SubscribForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('suscripciones')
         
     else:
         form = SubscribForm()
@@ -97,6 +97,7 @@ def servicios(request):
     ctx = {"form": form} 
     return render(request, 'DjangoApp/servicios.html', ctx)
 
+# -----Vistas Auxiliares-----------
 
 def comentarios(request):   
     
@@ -110,6 +111,11 @@ def comentarios(request):
         form = CommentForm()   
     
     ctx = {"form": form}  
-    return render(request, 'DjangoApp/comentarios.html' ,ctx)   
+    return render(request, 'DjangoApp/comentarios.html' ,ctx) 
 
-        
+def suscripciones(request):
+    
+    suscripciones = Subscripcion.objects.all()  
+
+    ctx = {"suscripciones": suscripciones}  
+    return render(request, 'DjangoApp/suscripciones.html' ,ctx)     
