@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Comentarios(models.Model):    
-    nombre = models.CharField(max_length=15)
+    nombre = models.CharField(max_length=25)
     comentario = models.TextField()
     creado = models.DateTimeField(auto_now_add=True)
 
@@ -13,4 +13,4 @@ class Subscripcion(models.Model):
     
     
 class Servicios(models.Model):    
-    servicio = models.CharField(max_length=20) 
+    servicio = models.CharField(max_length=30) 

@@ -16,20 +16,26 @@ def contacto(request):
 def portfolio(request):
     return render(request, 'DjangoApp/portfolio.html')
 
-def blog(request):
+def blog(request): 
     
     comentarios = Comentarios.objects.all()
+    
+    ctx = {"comentarios": comentarios}  
+    return render(request, 'DjangoApp/blog.html', ctx)
+
+
+def comentarios(request):    
+    
     
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('blog')
+            return redirect('blog')
         
     else:
-        form = CommentForm()
+        form = CommentForm()   
     
-    
-    
-    ctx = {"comentarios": comentarios, "form": form}   
-    return render(request, 'DjangoApp/blog.html', ctx)
+    ctx = {"form": form}  
+    return render(request, 'DjangoApp/comentarios.html' ,ctx)    
+        
