@@ -81,20 +81,23 @@ def blog(request):
     
     comentarios = Comentarios.objects.all()
     
-    ctx = {"comentarios": comentarios, "form": form}  
+    ctx = {"comentarios": comentarios, "form": form,}  
     return render(request, 'DjangoApp/blog.html', ctx)
 
 def servicios(request):
     if request.method == "POST":
-        form = SubscribForm(request.POST)
+        form = ServiciosForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('suscripciones')
         
     else:
         form = SubscribForm()
+    
+    
+    servicios = Servicios.objects.all()
         
-    ctx = {"form": form} 
+    ctx = {"form": form, "servicios": servicios} 
     return render(request, 'DjangoApp/servicios.html', ctx)
 
 # -----Vistas Auxiliares-----------
@@ -112,6 +115,20 @@ def comentarios(request):
     
     ctx = {"form": form}  
     return render(request, 'DjangoApp/comentarios.html' ,ctx) 
+
+def agregarServicio(request):   
+    
+    if request.method == "POST":
+        form = ServiciosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('servicios')
+        
+    else:
+        form = ServiciosForm()   
+    
+    ctx = {"form": form}  
+    return render(request, 'DjangoApp/agregarServicio.html' ,ctx) 
 
 def suscripciones(request):
     

@@ -12,4 +12,10 @@ class SubscribForm(forms.ModelForm):
     
     class Meta:
         model = Subscripcion
-        fields = ('email',)
+        fields = ('email',)        
+        
+class ServiciosForm(forms.ModelForm):
+    
+    class Meta:
+        model = Servicios
+        fields = ('servicio',)        

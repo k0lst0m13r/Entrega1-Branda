@@ -26,5 +26,5 @@ urlpatterns = [
     path('blog',views.blog, name="blog"),
     path('comentarios',views.comentarios, name="comentarios"),
     path('suscripciones',views.suscripciones, name="suscripciones"),
-    
+    path('agregarServicio', views.agregarServicio, name="agregarServicio")
 ]
