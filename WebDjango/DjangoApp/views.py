@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from DjangoApp.models import *
 from .forms import *
 
@@ -81,6 +82,14 @@ def blog(request):
     
     comentarios = Comentarios.objects.all()
     
+    if request.method == "POST":
+        busqueda = request.POST["buscar"]
+        if busqueda == "":
+            return redirect('resultadoBusqueda')    
+        resultados =  Comentarios.objects.filter(nombre__icontains=busqueda)
+        ctx = {"resultados": resultados}            
+        return render(request, 'DjangoApp/resultadoBusqueda.html', ctx)  
+              
     ctx = {"comentarios": comentarios, "form": form,}  
     return render(request, 'DjangoApp/blog.html', ctx)
 
@@ -135,4 +144,17 @@ def suscripciones(request):
     suscripciones = Subscripcion.objects.all()  
 
     ctx = {"suscripciones": suscripciones}  
-    return render(request, 'DjangoApp/suscripciones.html' ,ctx)     
+    return render(request, 'DjangoApp/suscripciones.html' ,ctx) 
+
+def resultadoBusqueda(request):
+    """    
+    if request.method == "POST":
+        busqueda = request.POST["buscar"]
+        if busqueda == "":
+            return redirect('resultadoBusqueda')    
+        resultados =  Comentarios.objects.filter(nombre__icontains=busqueda)
+        ctx = {"resultados": resultados}            
+        return render(request, 'DjangoApp/resultadoBusqueda.html', ctx)
+    """
+        
+    return render(request, 'DjangoApp/resultadoBusqueda.html')   
