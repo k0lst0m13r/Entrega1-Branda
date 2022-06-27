@@ -1,13 +1,14 @@
 # Entrega1-Branda
     
 Proyecto construido sobre django4.0 y bootstrap 4
+
 Template modificada de bootstrapmade( Template Name: Moderna - v4.8. )
 
 
 
 Correr "python manage.py runserver" desde /WebDjango.
 
-La ruta para agregar servicios en la vista "Servicios" es: localhost:8000/agregarServicio
+La ruta para agregar servicios en la vista "Servicios" es: "localhost:8000/agregarServicio"
 ahi se encuentra el correpondiente formulario.
 
 En la vista "Blog" seccion "Comentarios" se encuentra el formulario de busqueda 
