@@ -146,15 +146,5 @@ def suscripciones(request):
     ctx = {"suscripciones": suscripciones}  
     return render(request, 'DjangoApp/suscripciones.html' ,ctx) 
 
-def resultadoBusqueda(request):
-    """    
-    if request.method == "POST":
-        busqueda = request.POST["buscar"]
-        if busqueda == "":
-            return redirect('resultadoBusqueda')    
-        resultados =  Comentarios.objects.filter(nombre__icontains=busqueda)
-        ctx = {"resultados": resultados}            
-        return render(request, 'DjangoApp/resultadoBusqueda.html', ctx)
-    """
-        
+def resultadoBusqueda(request):        
     return render(request, 'DjangoApp/resultadoBusqueda.html')   
