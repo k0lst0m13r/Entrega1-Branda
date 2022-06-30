@@ -56,8 +56,15 @@
           <li><a class="{% if request.path == '/portfolio' %}active{% endif %}" href="{% url 'portfolio' %}">Portfolio</a></li>
           <li><a class="{% if request.path == '/blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
           <li><a class="{% if request.path == '/contacto' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a></li>
-          <li><a href="{% url 'login' %}"><b>Iniciar Sesión</b></a></li>
-          <li><a href="{% url 'registro' %}"><b>Registrarse</b></a></li>          
+          
+          {% if user.is_authenticated %}
+            <li><a href=""><i class="bi bi-person-circle mx-2"></i><b>{{user.username}}</b></a></li>
+            <li><a href="{% url 'logout' %}"><b>Cerrar Sesión</b></a></li>    
+          {% else %}          
+            <li><a href="{% url 'login' %}"><b>Iniciar Sesión</b></a></li>
+            <li><a href="{% url 'registro' %}"><b>Registrarse</b></a></li>
+          {% endif %}
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

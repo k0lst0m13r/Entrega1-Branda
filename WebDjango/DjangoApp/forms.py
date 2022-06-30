@@ -1,5 +1,5 @@
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-
 from .models import *
 
 class CommentForm(forms.ModelForm):
@@ -26,10 +26,11 @@ class CrearPost(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('titulo', 'post', 'autor',)
-        
+         
         
 class ImageForm(forms.ModelForm):
     
     class Meta:
         model = ImagenPost
         fields = ('imagen', 'descripcion',)
+        

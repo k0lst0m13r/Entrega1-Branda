@@ -51,8 +51,8 @@ def registro(request):
     return render(request, 'DjangoApp/registro.html', {"form": form})
 
 
-def logout(request):
-    loguot(request)
+def log_out(request):
+    logout(request)
     return redirect('index')
 
 def base(request):
