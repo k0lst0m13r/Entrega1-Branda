@@ -19,6 +19,8 @@ from DjangoApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login', views.log_in, name='login'),
+    path('registro', views.registro, name="registro"),
     path('',views.index, name="index"),
     path('servicios',views.servicios, name="servicios"),
     path('contacto',views.contacto, name="contacto"),
@@ -28,4 +30,6 @@ urlpatterns = [
     path('suscripciones',views.suscripciones, name="suscripciones"),
     path('agregarServicio', views.agregarServicio, name="agregarServicio"),
     path('resultadoBusqueda', views.resultadoBusqueda, name="resultadoBusqueda"),
+    path('crearPost', views.crearPost, name="crearPost"),
+    
 ]
