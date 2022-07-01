@@ -28,7 +28,6 @@ urlpatterns = [
     path('portfolio',views.portfolio, name="portfolio"),
     path('blog',views.blog, name="blog"),
     path('comentarios',views.comentarios, name="comentarios"),
-    path('suscripciones',views.suscripciones, name="suscripciones"),
     path('agregarServicio', views.agregarServicio, name="agregarServicio"),
     path('resultadoBusqueda', views.resultadoBusqueda, name="resultadoBusqueda"),
     path('crearPost', views.crearPost, name="crearPost"),

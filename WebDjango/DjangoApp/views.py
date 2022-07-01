@@ -55,108 +55,26 @@ def log_out(request):
     logout(request)
     return redirect('index')
 
-def base(request):
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-        
-    ctx = {"form": form}      
-    return render(request, 'DjangoApp/base.html' ,ctx)
+def base(request):     
+    return render(request, 'DjangoApp/base.html')
 
 
 def index(request):
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-        
-    ctx = {"form": form} 
-    return render(request, 'DjangoApp/index.html', ctx)
-
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-        
-    ctx = {"form": form} 
-    return render(request, 'DjangoApp/servicios.html', ctx)
+    return render(request, 'DjangoApp/index.html')
 
 def contacto(request):
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-        
-    ctx = {"form": form} 
-    return render(request, 'DjangoApp/contacto.html', ctx)
+    return render(request, 'DjangoApp/contacto.html')
 
 def portfolio(request):
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-        
-    ctx = {"form": form} 
-    return render(request, 'DjangoApp/portfolio.html', ctx)
+    return render(request, 'DjangoApp/portfolio.html')
 
 def blog(request):
-    if request.method == "POST":
-        form = SubscribForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-    
-    comentarios = Comentarios.objects.all()
-    
-    if request.method == "POST":
-        busqueda = request.POST["buscar"]
-        if busqueda == "":
-            return redirect('resultadoBusqueda')    
-        resultados =  Comentarios.objects.filter(nombre__icontains=busqueda)
-        ctx = {"resultados": resultados}            
-        return render(request, 'DjangoApp/resultadoBusqueda.html', ctx)  
-              
-    ctx = {"comentarios": comentarios, "form": form,}  
-    return render(request, 'DjangoApp/blog.html', ctx)
+    return render(request, 'DjangoApp/blog.html')
 
 def servicios(request):
-    if request.method == "POST":
-        form = ServiciosForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('suscripciones')
-        
-    else:
-        form = SubscribForm()
-    
-    
     servicios = Servicios.objects.all()
         
-    ctx = {"form": form, "servicios": servicios} 
+    ctx = {"servicios": servicios} 
     return render(request, 'DjangoApp/servicios.html', ctx)
 
 # -----Vistas Auxiliares-----------
@@ -188,13 +106,6 @@ def agregarServicio(request):
     
     ctx = {"form": form}  
     return render(request, 'DjangoApp/agregarServicio.html' ,ctx) 
-
-def suscripciones(request):
-    
-    suscripciones = Subscripcion.objects.all()  
-
-    ctx = {"suscripciones": suscripciones}  
-    return render(request, 'DjangoApp/suscripciones.html' ,ctx) 
 
 def resultadoBusqueda(request):        
     return render(request, 'DjangoApp/resultadoBusqueda.html') 
