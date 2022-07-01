@@ -28,7 +28,7 @@ def log_in(request):
     
 def registro(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -47,7 +47,7 @@ def registro(request):
     
 
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'DjangoApp/registro.html', {"form": form})
 
 
