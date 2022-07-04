@@ -48,7 +48,7 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
+      
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
@@ -56,6 +56,7 @@
           <li><a class="{% if request.path == '/portfolio' %}active{% endif %}" href="{% url 'portfolio' %}">Portfolio</a></li>
           <li><a class="{% if request.path == '/blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
           <li><a class="{% if request.path == '/contacto' %}active{% endif %}" href="{% url 'contacto' %}">Contacto</a></li>
+          <li><a class="{% if request.path == '/acerca' %}active{% endif %}" href="{% url 'acerca' %}">Acerca de</a></li>
           
           {% if user.is_authenticated %}
             <li><a href=""><i class="bi bi-person-circle mx-2"></i><b>{{user.username}}</b></a></li>

@@ -29,7 +29,7 @@ urlpatterns = [
     path('blog',views.blog, name="blog"),
     path('comentarios',views.comentarios, name="comentarios"),
     path('agregarServicio', views.agregarServicio, name="agregarServicio"),
-    path('resultadoBusqueda', views.resultadoBusqueda, name="resultadoBusqueda"),
     path('crearPost', views.crearPost, name="crearPost"),
-    
+    path('blogSingle', views.blogSingle, name="blogSingle"),
+    path('acerca', views.acerca, name="acerca")    
 ]

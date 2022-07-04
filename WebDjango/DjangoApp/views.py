@@ -69,7 +69,16 @@ def portfolio(request):
     return render(request, 'DjangoApp/portfolio.html')
 
 def blog(request):
-    return render(request, 'DjangoApp/blog.html')
+    post = Post.objects.all()
+    ctx = {"post": post}
+    return render(request, 'DjangoApp/blog.html', ctx)
+
+def blogSingle(request):
+    ctx = {}
+    return render(request, 'DjangoApp/blogSingle.html', ctx)
+
+def acerca(request):
+    return render(request, 'DjangoApp/acerca.html')
 
 def servicios(request):
     servicios = Servicios.objects.all()
@@ -107,8 +116,7 @@ def agregarServicio(request):
     ctx = {"form": form}  
     return render(request, 'DjangoApp/agregarServicio.html' ,ctx) 
 
-def resultadoBusqueda(request):        
-    return render(request, 'DjangoApp/resultadoBusqueda.html') 
+
   
 def crearPost(request):   
     

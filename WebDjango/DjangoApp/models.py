@@ -11,11 +11,6 @@ class Comentarios(models.Model):
         return self.nombre, self.creado
 
     
-class Subscripcion(models.Model):    
-    email = models.EmailField(max_length=40)
-    def __str__(self):
-        return self.email
-    
 class Servicios(models.Model):    
     servicio = models.CharField(max_length=30)
     def __str__(self):
