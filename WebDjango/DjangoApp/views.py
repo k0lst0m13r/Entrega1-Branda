@@ -74,7 +74,8 @@ def blog(request):
     return render(request, 'DjangoApp/blog.html', ctx)
 
 def blogSingle(request):
-    ctx = {}
+    post = Post.objects.all()
+    ctx = {"post": post}
     return render(request, 'DjangoApp/blogSingle.html', ctx)
 
 def acerca(request):
@@ -124,11 +125,16 @@ def crearPost(request):
         form = CrearPost(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog')
+    
+            ctx = {"form": form,}
+            return redirect('blog')       
+           
         
     else:
-        form = CrearPost()   
+        form = CrearPost()      
+        
+          
     
-    ctx = {"form": form}  
+    ctx = {"form": form,}  
     return render(request, 'DjangoApp/crearPost.html' ,ctx)
     

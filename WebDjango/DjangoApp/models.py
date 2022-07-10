@@ -8,7 +8,7 @@ class Comentarios(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.nombre, self.creado
+        return self.nombre
 
     
 class Servicios(models.Model):    
@@ -19,16 +19,12 @@ class Servicios(models.Model):
     
 class Post(models.Model):
     titulo = models.CharField(max_length=40)
+    imagen = models.ImageField(upload_to="blog/", default="imagen del post")
     post = models.TextField()
     autor = models.CharField(max_length=40)
     fecha = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.titulo, self. autor, self.fecha
+        return self.titulo
     
 
-class ImagenPost(models.Model):
-    descripcion = models.CharField(max_length=40)
-    imagen = models.ImageField(upload_to = "images/")
-    def __str__(self):
-        return self.descripcion
 

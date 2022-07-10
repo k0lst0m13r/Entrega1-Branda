@@ -21,14 +21,9 @@ class CrearPost(forms.ModelForm):
     
     class Meta:
         model = Post
-        fields = ('titulo', 'post', 'autor',)
+        fields = ('titulo', 'imagen', 'post', 'autor',)
          
         
-class ImageForm(forms.ModelForm):
-    
-    class Meta:
-        model = ImagenPost
-        fields = ('imagen', 'descripcion',)
         
 class UserRegisterForm(UserCreationForm):
     
