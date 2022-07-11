@@ -33,7 +33,9 @@ urlpatterns = [
     path('agregarServicio', views.agregarServicio, name="agregarServicio"),
     path('crearPost', views.crearPost, name="crearPost"),
     path('blogSingle', views.blogSingle, name="blogSingle"),
-    path('acerca', views.acerca, name="acerca")    
+    path('acerca', views.acerca, name="acerca"),
+    path('eliminarPost/<post_id>/', views.eliminarPost, name="eliminarPost"),
+    path('editarPost/<post_id>/', views.editarPost, name="editarPost")   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

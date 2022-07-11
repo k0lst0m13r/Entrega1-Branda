@@ -34,8 +34,8 @@
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'acerca' %}">{{ent.autor}}</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ent.fecha}}</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-pencil"></i> <a href="blog-single.html">Editar</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-x-circle"></i> <a href="blog-single.html">Eliminar</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-pencil"></i> <a href="{% url 'editarPost' ent.id %}">Editar</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-x-circle"></i> <a href="{% url 'eliminarPost' ent.id %}">Eliminar</a></li>
                 </ul>
               </div>
 

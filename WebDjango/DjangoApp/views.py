@@ -138,3 +138,20 @@ def crearPost(request):
     ctx = {"form": form,}  
     return render(request, 'DjangoApp/crearPost.html' ,ctx)
     
+    
+def eliminarPost(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('blog')
+
+def editarPost(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method != 'POST':
+        form = crearPost(request)
+    else:
+        form = crearPost(instance=post, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blogSingle', post_id=post.id)   
+    ctx = {'post': post, 'form': form}
+    return render(request, 'DjangoApp/editarPost.html', ctx) 

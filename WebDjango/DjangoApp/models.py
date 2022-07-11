@@ -19,12 +19,13 @@ class Servicios(models.Model):
     
 class Post(models.Model):
     titulo = models.CharField(max_length=40)
-    imagen = models.ImageField(upload_to="blog/", default="imagen del post")
+    imagen = models.ImageField(upload_to="blog/", default="DjangoApp/static/DjangoApp/assets/img/blog/blog-1.jpg")
     post = models.TextField()
     autor = models.CharField(max_length=40)
     fecha = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.titulo
+        return f"Autor: {self.autor} - Titulo: {self.titulo} - id: {self.id}"
     
 
 
+ 
