@@ -2,6 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from DjangoApp.models import *
 from .forms import *
 
@@ -131,8 +132,8 @@ def crearPost(request):
            
         
     else:
-        form = CrearPost()      
-        
+        form = CrearPost()    
+    
           
     
     ctx = {"form": form,}  
@@ -149,11 +150,12 @@ def editarPost(request, post_id):
     if request.method == 'POST':
         form = crearPost(request.POST)
         if form.is_valid():            
-            post.titulo = form.cleaned_data.get('titulo')
-            post.imagen = form.cleaned_data.get('imagen')
-            post.post = form.cleaned_data.get('post')
-            post.autor = form.cleaned_data.get('autor')
-            post.fecha = form.cleaned_data.get('fecha')
+            post_info = form.cleaned_data.get
+            post.titulo = post_info['titulo']
+            post.imagen = post_info['imagen']
+            post.post = post_info['post']
+            post.autor = post_info['autor']
+            post.fecha = post_info['fecha']
             post.save()
             return redirect('blogSingle')
         
