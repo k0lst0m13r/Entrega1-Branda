@@ -15,10 +15,10 @@
                     <h2>Crear Post</h2>
                 </div>            
                 <div class="d-flex justify-cntent-center align-items-center">    
-                    <form method="POST" class="post-form">
+                    <form method="post" action="{% url 'crearPost' %}" class="post-form">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit">Publicar</button>
+                        <button type="primary">Publicar</button>
                     </form>
                 </div>
             </div>

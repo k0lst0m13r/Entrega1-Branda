@@ -18,35 +18,35 @@
         <div class="row">
 
           <div class="col-lg-8 entries">
-            {% for ent in post %}
+            
             <article class="entry entry-single">
 
               <div class="entry-img">
-                <img src="{{ ent.imagen.url }}" alt="" class="img-fluid">
+                <img src="{{ post.imagen.url }}" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="#">{{ent.titulo}}</a>
+                <a href="#">{{post.titulo}}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'acerca' %}">{{ent.autor}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ent.fecha}}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'acerca' %}">{{post.autor}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{post.fecha}}</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-pencil"></i> <a href="{% url 'editarPost' ent.id %}">Editar</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-x-circle"></i> <a href="{% url 'eliminarPost' ent.id %}">Eliminar</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-pencil"></i> <a href="{% url 'editarPost' post.id %}">Editar</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-x-circle"></i> <a href="{% url 'eliminarPost' post.id %}">Eliminar</a></li>
                 </ul>
               </div>
 
               <div class="entry-content">
                 <p>
-                    {{ent.post}}
+                    {{post.post}}
                 </p>                
               </div>        
 
             </article><!-- End blog entry -->
-            {% endfor %}
+            
             <div class="blog-author d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" class="rounded-circle float-left" alt="">
               <div>

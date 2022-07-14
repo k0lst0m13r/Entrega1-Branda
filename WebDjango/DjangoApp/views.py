@@ -73,8 +73,8 @@ def blog(request):
     ctx = {"post": post}
     return render(request, 'DjangoApp/blog.html', ctx)
 
-def blogSingle(request):
-    post = Post.objects.all()
+def blogSingle(request, post_id):
+    post = Post.objects.get(id=post_id)
     ctx = {"post": post}
     return render(request, 'DjangoApp/blogSingle.html', ctx)
 
@@ -146,12 +146,24 @@ def eliminarPost(request, post_id):
 
 def editarPost(request, post_id):
     post = Post.objects.get(id=post_id)
-    if request.method != 'POST':
-        form = crearPost(request)
-    else:
-        form = crearPost(instance=post, data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('blogSingle', post_id=post.id)   
-    ctx = {'post': post, 'form': form}
-    return render(request, 'DjangoApp/editarPost.html', ctx) 
+    if request.method == 'POST':
+        form = crearPost(request.POST)
+        if form.is_valid():            
+            post.titulo = form.cleaned_data.get('titulo')
+            post.imagen = form.cleaned_data.get('imagen')
+            post.post = form.cleaned_data.get('post')
+            post.autor = form.cleaned_data.get('autor')
+            post.fecha = form.cleaned_data.get('fecha')
+            post.save()
+            return redirect('blogSingle')
+        
+                
+        else:
+            return render(request, 'DjangoApp/editarPost.html', {'form': form, 'post':post})      
+        
+        
+    formEditar = crearPost(initial={'titulo': post.titulo, 'imagen': post.imagen, 'post': post.post, 'autor': post.autor, 'fecha': post.fecha})
+        
+              
+    
+    return render(request, 'DjangoApp/editarPost.html', {'form': formEditar, 'post':post}) 
